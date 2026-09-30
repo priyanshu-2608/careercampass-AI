@@ -1,0 +1,7 @@
+/*
+  CareerCompass AI - Next.js App Router Prototype Styles
+  ------------------------------------------------------
+  Active styles are managed in Tailwind CSS and src/app/globals.css.
+  The live prototype is running at http://localhost:3000.
+*/
+@import "./src/app/globals.css";

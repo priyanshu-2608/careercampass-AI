@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerCompass AI — Beginner Career & Employability Prototype</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .clean-card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- ================= SCREEN 1: LANDING & LOGIN PAGE ================= -->
+  <div id="screen-login" class="flex-1 flex flex-col justify-between">
+    <!-- Navbar -->
+    <header class="bg-white border-b border-blue-100 shadow-sm sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 font-bold">
+            C
+          </div>
+          <div>
+            <span class="font-extrabold text-lg text-slate-900 tracking-tight">
+              Career<span class="text-blue-600">Compass</span> AI
+            </span>
+            <span class="text-[10px] text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-bold ml-2">
+              White & Light Blue Prototype
+            </span>
+          </div>
+        </div>
+
+        <button onclick="quickDemoLogin('web-development')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition-all flex items-center gap-1.5">
+          <span>⚡ 1-Click Demo Login</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Login Body -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold">
+          Beginner-Level AI Career Prototype
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Select Your Domain, <span class="text-blue-600">Find Skill Gaps</span> & Get Hired
+        </h1>
+        <p class="text-sm text-slate-600">
+          A very simple and clean prototype designed with a white and light blue theme. Choose your domain to unlock the 5 features.
+        </p>
+      </div>
+
+      <!-- Login Form Card -->
+      <div class="bg-white rounded-2xl shadow-xl shadow-blue-500/5 border border-blue-100 p-6 sm:p-8 space-y-6">
+        <!-- Step 1: Student Info -->
+        <div class="space-y-3">
+          <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider text-blue-600">
+            Step 1: Your Student Profile
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Your Name</label>
+              <input type="text" id="login-name" value="Priyanshu Gangwar" class="w-full bg-slate-50 border border-slate-200 focus:border-blue-500 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Your Degree / College Year</label>
+              <input type="text" id="login-education" value="B.Tech Computer Science (3rd Year)" class="w-full bg-slate-50 border border-slate-200 focus:border-blue-500 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Select Domain -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider text-blue-600">
+              Step 2: Choose Your Domain
+            </h2>
+            <span class="text-xs text-slate-500">Click a card to select</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="domain-cards-container">
+            <!-- Domain 1: Web Development -->
+            <div onclick="selectDomain('web-development')" id="card-web-development" class="domain-card p-4 rounded-xl border-2 border-blue-600 bg-blue-50/80 cursor-pointer transition-all">
+              <div class="flex items-center justify-between mb-2">
+                <div class="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold">💻</div>
+                <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">Selected</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-sm">Web Development</h3>
+              <p class="text-xs text-slate-500 mt-1">HTML, CSS, JavaScript, React, Node.js & APIs</p>
+            </div>
+
+            <!-- Domain 2: Data Science & AI -->
+            <div onclick="selectDomain('data-science')" id="card-data-science" class="domain-card p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-blue-300 cursor-pointer transition-all">
+              <div class="flex items-center justify-between mb-2">
+                <div class="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold">📊</div>
+                <span class="text-[10px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">High Growth</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-sm">Data Science & AI</h3>
+              <p class="text-xs text-slate-500 mt-1">Python, SQL, Machine Learning, Pandas & Viz</p>
+            </div>
+
+            <!-- Domain 3: Cloud & DevOps -->
+            <div onclick="selectDomain('cloud-devops')" id="card-cloud-devops" class="domain-card p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-blue-300 cursor-pointer transition-all">
+              <div class="flex items-center justify-between mb-2">
+                <div class="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold">☁️</div>
+                <span class="text-[10px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">In Demand</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-sm">Cloud & DevOps</h3>
+              <p class="text-xs text-slate-500 mt-1">Linux, AWS, Docker, Git & CI/CD Pipelines</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <span class="text-xs text-slate-500">Theme: <strong class="text-blue-600">White Background & Blue Icons</strong></span>
+          <button onclick="handleLoginSubmit()" class="px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-lg shadow-blue-500/25 flex items-center gap-2 transition-all">
+            <span>Log In & Open Dashboard →</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+      CareerCompass AI • Clean Beginner Prototype
+    </footer>
+  </div>
+
+
+  <!-- ================= SCREEN 2: MAIN DASHBOARD PAGE (5 ICONS) ================= -->
+  <div id="screen-dashboard" class="hidden flex-1 flex flex-col justify-between">
+    <!-- Dashboard Navbar -->
+    <header class="bg-white border-b border-blue-100 shadow-sm sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 font-bold">
+            C
+          </div>
+          <div>
+            <span class="font-extrabold text-base sm:text-lg text-slate-900">
+              Career<span class="text-blue-600">Compass</span> AI
+            </span>
+            <span class="text-[10px] text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-bold ml-1">
+              Dashboard
+            </span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="px-3 py-1 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 text-xs font-semibold">
+            Domain: <strong id="nav-active-domain" class="text-blue-700">Web Development</strong>
+          </div>
+          <div class="text-xs font-semibold text-slate-700 hidden sm:block" id="nav-user-name">
+            👤 Priyanshu Gangwar
+          </div>
+          <button onclick="handleLogout()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            Log Out / Switch
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content Area -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 w-full space-y-6">
+      <!-- Welcome Header -->
+      <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h1 class="text-2xl font-extrabold text-slate-900" id="dash-welcome-title">
+            Welcome, Priyanshu Gangwar!
+          </h1>
+          <p class="text-xs text-slate-500 mt-1" id="dash-welcome-sub">
+            Your personalized career roadmap for Web Development
+          </p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold">
+          ● Gemini 2.5 Flash Connected
+        </span>
+      </div>
+
+      <!-- 5 FEATURE ICONS NAVIGATION BAR -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between px-1">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            5 Core Features (Click an icon to view)
+          </span>
+          <span class="text-xs text-blue-600 font-semibold">Live Prototype</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <!-- Icon {a}: Domain Analysis -->
+          <button onclick="switchTab('tab-a')" id="btn-tab-a" class="feature-tab-btn p-4 rounded-2xl border-2 border-blue-600 bg-blue-50 text-center transition-all flex flex-col items-center">
+            <span class="w-5 h-5 rounded-md bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center mb-1">A</span>
+            <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl mb-2 shadow-md shadow-blue-500/30">🔍</div>
+            <h3 class="text-xs font-bold text-blue-900">Domain Analysis</h3>
+            <span class="text-[10px] text-slate-500">Market & salary</span>
+          </button>
+
+          <!-- Icon {b}: Career & Skill Gap -->
+          <button onclick="switchTab('tab-b')" id="btn-tab-b" class="feature-tab-btn p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-300 text-center transition-all flex flex-col items-center">
+            <span class="w-5 h-5 rounded-md bg-slate-200 text-slate-700 text-[10px] font-bold flex items-center justify-center mb-1">B</span>
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-2">🗺️</div>
+            <h3 class="text-xs font-bold text-slate-800">Career & Skill Gap</h3>
+            <span class="text-[10px] text-slate-500">Checklist & roadmap</span>
+          </button>
+
+          <!-- Icon {c}: Courses & Certifications -->
+          <button onclick="switchTab('tab-c')" id="btn-tab-c" class="feature-tab-btn p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-300 text-center transition-all flex flex-col items-center">
+            <span class="w-5 h-5 rounded-md bg-slate-200 text-slate-700 text-[10px] font-bold flex items-center justify-center mb-1">C</span>
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-2">🎓</div>
+            <h3 class="text-xs font-bold text-slate-800">Courses & Certs</h3>
+            <span class="text-[10px] text-slate-500">Coursera & NPTEL</span>
+          </button>
+
+          <!-- Icon {d}: AI Resume Analyser -->
+          <button onclick="switchTab('tab-d')" id="btn-tab-d" class="feature-tab-btn p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-300 text-center transition-all flex flex-col items-center">
+            <span class="w-5 h-5 rounded-md bg-slate-200 text-slate-700 text-[10px] font-bold flex items-center justify-center mb-1">D</span>
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-2">📄</div>
+            <h3 class="text-xs font-bold text-slate-800">AI Resume Analyser</h3>
+            <span class="text-[10px] text-slate-500">Score & keywords</span>
+          </button>
+
+          <!-- Icon {e}: Jobs & Internships -->
+          <button onclick="switchTab('tab-e')" id="btn-tab-e" class="feature-tab-btn p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-300 text-center transition-all flex flex-col items-center">
+            <span class="w-5 h-5 rounded-md bg-slate-200 text-slate-700 text-[10px] font-bold flex items-center justify-center mb-1">E</span>
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-2">💼</div>
+            <h3 class="text-xs font-bold text-slate-800">Internships & Jobs</h3>
+            <span class="text-[10px] text-slate-500">Live opportunities</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= 5 FEATURE WORKSPACE VIEWS ================= -->
+
+      <!-- VIEW {A}: DOMAIN ANALYSIS -->
+      <div id="view-tab-a" class="space-y-4">
+        <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Feature {A}</span>
+              <h2 class="text-xl font-bold text-slate-900 mt-1">Domain Analysis Overview</h2>
+            </div>
+            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+              95% Market Demand
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="text-xs text-slate-500 block">Average Entry Salary</span>
+              <strong class="text-xl font-extrabold text-slate-900">₹6 - 14 LPA</strong>
+              <p class="text-[11px] text-slate-500 mt-0.5">Junior & campus placements</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="text-xs text-slate-500 block">Learning Curve</span>
+              <strong class="text-xl font-extrabold text-blue-600">Beginner Friendly</strong>
+              <p class="text-[11px] text-slate-500 mt-0.5">3-4 months structured pathway</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="text-xs text-slate-500 block">Top Entry Roles</span>
+              <strong class="text-sm font-bold text-slate-900 block mt-1">Frontend Dev, React Dev</strong>
+              <p class="text-[11px] text-slate-500">Full Stack & Backend</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 space-y-2">
+            <span class="text-xs font-bold text-blue-900 block">Core Skills Required for Web Development:</span>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2.5 py-1 bg-white text-blue-700 rounded-lg font-semibold border border-blue-200">HTML & CSS (Essential)</span>
+              <span class="px-2.5 py-1 bg-white text-blue-700 rounded-lg font-semibold border border-blue-200">JavaScript ES6 (Essential)</span>
+              <span class="px-2.5 py-1 bg-white text-blue-700 rounded-lg font-semibold border border-blue-200">React.js (Essential)</span>
+              <span class="px-2.5 py-1 bg-white text-blue-700 rounded-lg font-semibold border border-blue-200">Git & GitHub (Essential)</span>
+              <span class="px-2.5 py-1 bg-white text-slate-700 rounded-lg font-semibold border border-slate-200">Node.js & Express (Recommended)</span>
+              <span class="px-2.5 py-1 bg-white text-slate-700 rounded-lg font-semibold border border-slate-200">SQL / MongoDB (Recommended)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW {B}: CAREER & SKILL GAP -->
+      <div id="view-tab-b" class="hidden space-y-4">
+        <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Feature {B}</span>
+              <h2 class="text-xl font-bold text-slate-900 mt-1">Career & Skill Gap Diagnostic</h2>
+            </div>
+            <div class="text-right">
+              <span class="text-xs text-slate-500">Your Readiness Score</span>
+              <div class="text-xl font-extrabold text-blue-700" id="readiness-score-display">75% Ready</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Skill Checklist -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+              <span class="text-xs font-bold text-slate-900 block">Check the skills you currently know:</span>
+              <div class="space-y-2 text-xs">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked onchange="toggleSkillGap()" class="rounded text-blue-600">
+                  <span>HTML & CSS (Mastered)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked onchange="toggleSkillGap()" class="rounded text-blue-600">
+                  <span>JavaScript Fundamentals (Mastered)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked onchange="toggleSkillGap()" class="rounded text-blue-600">
+                  <span>Git Version Control (Mastered)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" onchange="toggleSkillGap()" class="rounded text-blue-600">
+                  <span>React Components & State (Missing Gap)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" onchange="toggleSkillGap()" class="rounded text-blue-600">
+                  <span>Node.js Backend APIs (Missing Gap)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Missing Gaps Recommendation -->
+            <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 space-y-3 flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-blue-900 block">Your Identified Skill Gaps to Bridge:</span>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <span class="px-2.5 py-1 bg-white text-blue-700 rounded-lg text-xs font-bold border border-blue-200">⚠️ React.js Components</span>
+                  <span class="px-2.5 py-1 bg-white text-blue-700 rounded-lg text-xs font-bold border border-blue-200">⚠️ Node.js Backend & SQL</span>
+                </div>
+                <p class="text-xs text-slate-600 mt-2">
+                  Bridge these 2 gaps to qualify for 90%+ of entry-level developer listings.
+                </p>
+              </div>
+              <button onclick="switchTab('tab-c')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition-colors">
+                View Free Courses to Bridge These Gaps →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW {C}: COURSES & CERTIFICATIONS -->
+      <div id="view-tab-c" class="hidden space-y-4">
+        <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Feature {C}</span>
+              <h2 class="text-xl font-bold text-slate-900 mt-1">Curated Courses & Certifications</h2>
+            </div>
+            <span class="text-xs text-slate-500">Free to learn & Govt approved</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-slate-50 space-y-2">
+              <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded font-bold text-[10px]">Coursera • Meta</span>
+              <h3 class="font-bold text-slate-900 text-sm">Meta Front-End Developer Certificate</h3>
+              <p class="text-slate-500">HTML/CSS, JavaScript, React components, and responsive design.</p>
+              <a href="https://www.coursera.org" target="_blank" class="inline-block mt-2 text-blue-600 font-bold hover:underline">Enroll / Audit Free →</a>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-slate-50 space-y-2">
+              <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded font-bold text-[10px]">freeCodeCamp</span>
+              <h3 class="font-bold text-slate-900 text-sm">Responsive Web Design Certification</h3>
+              <p class="text-slate-500">300 Hours of free interactive coding projects from scratch.</p>
+              <a href="https://www.freecodecamp.org" target="_blank" class="inline-block mt-2 text-blue-600 font-bold hover:underline">Start Free Course →</a>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-slate-50 space-y-2">
+              <span class="px-2 py-0.5 bg-amber-100 text-amber-800 rounded font-bold text-[10px]">NPTEL / SWAYAM</span>
+              <h3 class="font-bold text-slate-900 text-sm">Web Technologies by IIT Kharagpur</h3>
+              <p class="text-slate-500">Govt AICTE recognized college credit course for engineering students.</p>
+              <a href="https://nptel.ac.in" target="_blank" class="inline-block mt-2 text-blue-600 font-bold hover:underline">View Portal →</a>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-slate-50 space-y-2">
+              <span class="px-2 py-0.5 bg-rose-100 text-rose-700 rounded font-bold text-[10px]">edX • Harvard</span>
+              <h3 class="font-bold text-slate-900 text-sm">CS50's Web Programming with Python & JS</h3>
+              <p class="text-slate-500">Full stack web architecture, databases, APIs, and security.</p>
+              <a href="https://www.edx.org" target="_blank" class="inline-block mt-2 text-blue-600 font-bold hover:underline">Audit Course →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW {D}: AI RESUME ANALYSER -->
+      <div id="view-tab-d" class="hidden space-y-4">
+        <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm space-y-4">
+          <div>
+            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Feature {D}</span>
+            <h2 class="text-xl font-bold text-slate-900 mt-1">AI Resume Analyser with Gemini</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <label class="text-xs font-bold text-slate-700 block">Your Resume Text:</label>
+              <textarea id="resume-text-input" rows="8" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 font-mono resize-none focus:outline-none focus:border-blue-500">Priyanshu Gangwar
+B.Tech Computer Science (CGPA: 8.8)
+Skills: HTML, CSS, JavaScript, React, Git, Python
+
+Projects:
+- Personal Portfolio: Built responsive website with CSS flexbox.
+- Task Manager: Built CRUD web app using JS and LocalStorage.</textarea>
+              <button onclick="runResumeAnalysis()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-blue-500/20">
+                Analyze My Resume with Gemini AI
+              </button>
+            </div>
+
+            <!-- Results -->
+            <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 space-y-3 text-xs">
+              <div class="flex items-center justify-between pb-2 border-b border-blue-200">
+                <span class="font-bold text-blue-900">AI Analysis Score:</span>
+                <span class="text-xl font-extrabold text-blue-700" id="resume-score">84 / 100</span>
+              </div>
+              <div class="space-y-1">
+                <span class="font-bold text-emerald-800 block">✓ Matched Keywords:</span>
+                <p class="text-slate-600">HTML, CSS, JavaScript, React, Git, LocalStorage</p>
+              </div>
+              <div class="space-y-1">
+                <span class="font-bold text-blue-900 block">⚠️ Missing Recommended Keywords:</span>
+                <p class="text-slate-600">REST APIs, Node.js, Tailwind CSS, SQL</p>
+              </div>
+              <div class="space-y-1">
+                <span class="font-bold text-slate-800 block">💡 Actionable Improvement:</span>
+                <p class="text-slate-600 leading-relaxed">Add numbers & metrics to project bullets (e.g. 'Handled 500+ items, reducing task search latency by 40%').</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW {E}: INTERNSHIPS & JOBS -->
+      <div id="view-tab-e" class="hidden space-y-4">
+        <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Feature {E}</span>
+              <h2 class="text-xl font-bold text-slate-900 mt-1">Internship & Job Opportunities</h2>
+            </div>
+            <span class="text-xs text-blue-600 font-semibold">Matched to Web Development</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-white space-y-2.5 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 text-sm">Zomato</span>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">92% Fit</span>
+              </div>
+              <h4 class="font-bold text-slate-800">Frontend Developer Intern</h4>
+              <p class="text-slate-500">Gurugram / Remote • ₹25,000 / month</p>
+              <div class="text-[10px] text-blue-600 font-semibold">Skills: HTML, CSS, JavaScript, React</div>
+              <button onclick="applyJob(this)" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-colors">
+                1-Click Apply
+              </button>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-white space-y-2.5 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 text-sm">Swiggy</span>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">88% Fit</span>
+              </div>
+              <h4 class="font-bold text-slate-800">React Web Developer</h4>
+              <p class="text-slate-500">Bengaluru • ₹7.5 - 10 LPA</p>
+              <div class="text-[10px] text-blue-600 font-semibold">Skills: JavaScript, React, REST APIs</div>
+              <button onclick="applyJob(this)" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-colors">
+                1-Click Apply
+              </button>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-white space-y-2.5 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 text-sm">TCS</span>
+                <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 font-bold text-[10px]">85% Fit</span>
+              </div>
+              <h4 class="font-bold text-slate-800">Junior Full Stack Trainee</h4>
+              <p class="text-slate-500">Pan-India (Hybrid) • ₹4.5 - 6.5 LPA</p>
+              <div class="text-[10px] text-blue-600 font-semibold">Skills: JavaScript, Node.js, SQL</div>
+              <button onclick="applyJob(this)" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-colors">
+                1-Click Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+      CareerCompass AI • Clean Beginner Prototype • Theme: White & Light Blue
+    </footer>
+  </div>
+
+
+  <!-- Simple JavaScript for Interactive State Transitions -->
+  <script>
+    let currentDomain = "web-development";
+
+    function selectDomain(domainId) {
+      currentDomain = domainId;
+      document.querySelectorAll('.domain-card').forEach(c => {
+        c.classList.remove('border-blue-600', 'bg-blue-50/80');
+        c.classList.add('border-slate-200', 'bg-white');
+      });
+      const card = document.getElementById('card-' + domainId);
+      if (card) {
+        card.classList.add('border-blue-600', 'bg-blue-50/80');
+        card.classList.remove('border-slate-200', 'bg-white');
+      }
+    }
+
+    function quickDemoLogin(domainId) {
+      selectDomain(domainId);
+      handleLoginSubmit();
+    }
+
+    function handleLoginSubmit() {
+      const name = document.getElementById('login-name').value || "Priyanshu Gangwar";
+      const edu = document.getElementById('login-education').value || "B.Tech Computer Science";
+      
+      document.getElementById('screen-login').classList.add('hidden');
+      document.getElementById('screen-dashboard').classList.remove('hidden');
+
+      document.getElementById('dash-welcome-title').innerText = "Welcome, " + name + "!";
+      document.getElementById('dash-welcome-sub').innerText = "Your personalized career roadmap for " + (currentDomain === 'data-science' ? 'Data Science & AI' : currentDomain === 'cloud-devops' ? 'Cloud & DevOps' : 'Web Development') + " • " + edu;
+      document.getElementById('nav-user-name').innerText = "👤 " + name;
+      document.getElementById('nav-active-domain').innerText = currentDomain === 'data-science' ? 'Data Science & AI' : currentDomain === 'cloud-devops' ? 'Cloud & DevOps' : 'Web Development';
+
+      switchTab('tab-a');
+      window.scrollTo(0, 0);
+    }
+
+    function handleLogout() {
+      document.getElementById('screen-dashboard').classList.add('hidden');
+      document.getElementById('screen-login').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    function switchTab(tabId) {
+      // Hide all views
+      ['tab-a', 'tab-b', 'tab-c', 'tab-d', 'tab-e'].forEach(t => {
+        const view = document.getElementById('view-' + t);
+        const btn = document.getElementById('btn-' + t);
+        if (view) view.classList.add('hidden');
+        if (btn) {
+          btn.classList.remove('border-blue-600', 'bg-blue-50');
+          btn.classList.add('border-slate-200', 'bg-white');
+          btn.querySelector('h3').classList.remove('text-blue-900');
+          btn.querySelector('h3').classList.add('text-slate-800');
+          btn.querySelector('span').classList.remove('bg-blue-600', 'text-white');
+          btn.querySelector('span').classList.add('bg-slate-200', 'text-slate-700');
+        }
+      });
+
+      // Show active view
+      const activeView = document.getElementById('view-' + tabId);
+      const activeBtn = document.getElementById('btn-' + tabId);
+      if (activeView) activeView.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.add('border-blue-600', 'bg-blue-50');
+        activeBtn.classList.remove('border-slate-200', 'bg-white');
+        activeBtn.querySelector('h3').classList.add('text-blue-900');
+        activeBtn.querySelector('h3').classList.remove('text-slate-800');
+        activeBtn.querySelector('span').classList.add('bg-blue-600', 'text-white');
+        activeBtn.querySelector('span').classList.remove('bg-slate-200', 'text-slate-700');
+      }
+    }
+
+    function toggleSkillGap() {
+      const checkboxes = document.querySelectorAll('#view-tab-b input[type="checkbox"]');
+      const checkedCount = Array.from(checkboxes).filter(c => c.checked).length;
+      const pct = Math.round((checkedCount / checkboxes.length) * 100);
+      document.getElementById('readiness-score-display').innerText = pct + "% Ready";
+    }
+
+    function runResumeAnalysis() {
+      const scoreElem = document.getElementById('resume-score');
+      scoreElem.innerText = "Analyzing...";
+      setTimeout(() => {
+        scoreElem.innerText = "86 / 100";
+      }, 700);
+    }
+
+    function applyJob(btn) {
+      btn.innerText = "✓ Applied!";
+      btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+      btn.classList.add('bg-emerald-600', 'cursor-default');
+    }
+  </script>
+</body>
+</html>

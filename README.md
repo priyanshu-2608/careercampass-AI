@@ -6,6 +6,19 @@ This platform connects academic credentials with employment realities through re
 
 ---
 
+## 👥 Team — Neural Ninjas
+
+**Team Leader:** Uma Nath
+
+**Team Members:**
+- Uma Nath — Team Leader
+- Priyanshu Gangwar
+- Sahil
+- Saksham Richhariya
+
+---
+
+
 ## 🌟 Key Architectural Features Across All 3 Stages
 
 ### 1. Landing Page & Onboarding Flow
